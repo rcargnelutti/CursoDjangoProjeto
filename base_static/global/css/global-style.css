@@ -132,7 +132,6 @@ h6 {
     border-color: var(--color-primary);
     background: var(--color-white);
 }
-<link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
 
 .search-form:focus-within .search-button {
     color: var(--color-primary);
