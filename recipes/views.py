@@ -16,6 +16,7 @@ def home(request):
 
 
 def category(request, category_name):
+    # Exemplo com query set
     # recipes = Recipe.objects.filter(
     #     category__name=category_name,
     #     is_published=True,
@@ -24,8 +25,17 @@ def category(request, category_name):
     # if not recipes:
     #     raise Http404('Not found')
 
+    # Exemplo com lista
+    # recipes = get_list_or_404(
+    #    Recipe, category__name=category_name, is_published=True)
+
+    # exemplo com lista e query set
     recipes = get_list_or_404(
-        Recipe, category__name=category_name, is_published=True)
+        Recipe.objects.filter(
+            category__name=category_name,
+            is_published=True,
+        ).order_by('-id')
+    )
 
     return render(request, 'recipes/pages/category.html', context={
         'recipes': recipes,
