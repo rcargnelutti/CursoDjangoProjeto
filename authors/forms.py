@@ -78,7 +78,7 @@ class RegisterForm(forms.ModelForm):
             })
         }
 
-        def clean_password(self):
+    def clean_password(self):
         data = self.cleaned_data.get('password')
 
         if 'atenção' in data:
@@ -88,7 +88,7 @@ class RegisterForm(forms.ModelForm):
                 params={'pipoca': '"atenção"'}
             )
 
-        return data
+            return data
 
     def clean_first_name(self):
         data = self.cleaned_data.get('first_name')
