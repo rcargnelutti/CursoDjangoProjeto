@@ -77,7 +77,7 @@ class RegisterForm(forms.ModelForm):
             'password2': 'Password 2',
         }
         help_texts = {
-            'email': 'The e-mail must be valid',
+            'email': 'The e-mail must be valid.',
         }
         error_messages = {
             'username': {
