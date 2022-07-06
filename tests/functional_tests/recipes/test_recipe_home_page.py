@@ -1,7 +1,7 @@
 
 from selenium.webdriver.common.by import By
 
-from base import RecipeBaseFunctionalTest
+from .base import RecipeBaseFunctionalTest
 
 
 class RecipeHomePageFunctionalTest(RecipeBaseFunctionalTest):
