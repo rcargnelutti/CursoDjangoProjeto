@@ -1,4 +1,3 @@
-import django
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -52,7 +51,7 @@ def login_create(request):
         raise Http404()
 
     form = LoginForm(request.POST)
-    login_url = reverse('authors:login')
+    # login_url = reverse('authors:login')
 
     if form.is_valid():
         authenticated_user = authenticate(
@@ -68,7 +67,8 @@ def login_create(request):
     else:
         messages.error(request, 'Invalid username or password')
 
-    return redirect(login_url)
+    # return redirect(login_url)
+    return redirect(reverse('authors:dashboard'))
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
@@ -85,3 +85,8 @@ def logout_view(request):
     messages.success(request, 'Logged out successfully')
     logout(request)
     return redirect(reverse('authors:login'))
+
+
+@login_required(login_url='authors:login', redirect_field_name='next')
+def dashboard(request):
+    return render(request, 'authors/pages/dashboard.html')
