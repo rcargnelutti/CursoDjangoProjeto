@@ -56,5 +56,7 @@
     "django-html": "html", // batisteo.vscode-django
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
-  }
+  },
+  "material-icon-theme.hidesExplorerArrows": true,
+  "editor.fontSize": 14
 }
