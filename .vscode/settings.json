@@ -6,7 +6,7 @@
   "python.testing.pytestEnabled": true,
   "python.testing.pytestArgs": ["."], // -x to bail
   "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
+  "python.linting.mypyEnabled": false,
   "python.linting.pylintArgs": [
     "--load-plugins=pylint_django",
     "--errors-only"
@@ -58,5 +58,6 @@
     "typescript": "typescriptreact"
   },
   "material-icon-theme.hidesExplorerArrows": true,
-  "editor.fontSize": 14
+  "editor.fontSize": 14,
+  "python.linting.enabled": true
 }
