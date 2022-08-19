@@ -24,6 +24,8 @@ class RecipeListViewBase(ListView):
             is_published=True,
         )
         qs = qs.select_related('author', 'category')
+        # qs = qs.prefetch_related('author', 'category')
+        # prefetch_related é mais utilizado em relações de muitos para muitos
         return qs
 
     def get_context_data(self, *args, **kwargs):
