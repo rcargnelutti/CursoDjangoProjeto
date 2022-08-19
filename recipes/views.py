@@ -15,7 +15,9 @@ PER_PAGE = int(os.environ.get('PER_PAGE', 6))
 
 def theory(request, *args, **kwargs):
     recipes = Recipe.objects.all()
-    recipes = recipes.filter(title__icontains='Receita')
+    recipes = recipes \
+        .filter(title__icontains='Receita') \
+        .first()
 
     context = {
         'recipes': recipes
