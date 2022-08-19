@@ -21,6 +21,11 @@ urlpatterns = [
          name="recipe"
          ),
 
+    path('recipes/theory/',
+         views.theory,
+         name="theory"
+         ),
+
     # Api
 
     path('recipes/api/v1/',
