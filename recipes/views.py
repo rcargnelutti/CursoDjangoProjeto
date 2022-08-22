@@ -52,7 +52,7 @@ class RecipeListViewBase(ListView):
         # qs = qs.prefetch_related('author', 'category')
         # prefetch_related é mais utilizado em relações de muitos para muitos
         # qs = qs.select_related('tags')
-        
+
         return qs
 
     def get_context_data(self, *args, **kwargs):
@@ -108,6 +108,7 @@ class RecipeListViewCategory(RecipeListViewBase):
 
         return qs
 
+
 class RecipeListViewTag(RecipeListViewBase):
     template_name = 'recipes/pages/tag.html'
 
@@ -132,6 +133,7 @@ class RecipeListViewTag(RecipeListViewBase):
         })
 
         return ctx
+
 
 class RecipeListViewSearch(RecipeListViewBase):
     template_name = 'recipes/pages/search.html'
