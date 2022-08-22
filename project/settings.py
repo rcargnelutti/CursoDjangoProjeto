@@ -32,7 +32,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG') == '1' else False
 
+# Está permitindo qualquer site de usar nossa aplicação django
+# não é seguro
 ALLOWED_HOSTS = ['*']  # type: ignore
+
+# Colocando o domínio fica seguro
+# ALLOWED_HOSTS = ['cursodjango.otaviomiranda.com.br']  # type: ignore
+
+# Adicionar o endereço igual está na requisição origin do console
+# CSRF_TRUSTED_ORIGINS = ['HTTPS://*.cursodjango.otaviomiranda.com.br']
 
 
 # Application definition
