@@ -13,11 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
-if os.environ.get('DEBUG', None) is None:
-    from dotenv import load_dotenv
-    load_dotenv()
-
 from django.contrib.messages import constants
+from utils.environment import get_env_variable, parse_comma_sep_str_to_list
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,15 +29,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG') == '1' else False
 
-# Está permitindo qualquer site de usar nossa aplicação django
-# não é seguro
-ALLOWED_HOSTS = ['*']  # type: ignore
 
-# Colocando o domínio fica seguro
-# ALLOWED_HOSTS = ['cursodjango.otaviomiranda.com.br']  # type: ignore
+ALLOWED_HOSTS: list[str] = parse_comma_sep_str_to_list(
+    get_env_variable('ALLOWED_HOSTS')
+)
 
-# Adicionar o endereço igual está na requisição origin do console
-# CSRF_TRUSTED_ORIGINS = ['HTTPS://*.cursodjango.otaviomiranda.com.br']
+CSRF_TRUSTED_ORIGINS: list[str] = parse_comma_sep_str_to_list(
+    get_env_variable('CSRF_TRUSTED_ORIGINS')
+)
 
 
 # Application definition
