@@ -48,10 +48,10 @@ class RecipeListViewBase(ListView):
         qs = qs.filter(
             is_published=True,
         )
-        qs = qs.select_related('author', 'category')
+        qs = qs.select_related('author', 'category', 'author__profile')
         # qs = qs.prefetch_related('author', 'category')
         # prefetch_related é mais utilizado em relações de muitos para muitos
-        # qs = qs.select_related('tags')
+        qs = qs.prefetch_related('tags')
 
         return qs
 
