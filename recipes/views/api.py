@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from django.urls import is_valid_path
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -20,11 +19,13 @@ def recipe_api_list(request):
         )
         return Response(serializer.data)
     elif request.method == 'POST':
-        serializer = RecipeSerializer(data=request.data)
+        serializer = RecipeSerializer(
+            data=request.data,
+            context={'request': request},
+        )
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(
-            # serializer.validated_data,
             serializer.data,
             status=status.HTTP_201_CREATED
         )
@@ -37,11 +38,12 @@ def recipe_api_detail(request, pk):
         pk=pk
     )
     serializer = RecipeSerializer(
-        instance=recipe, 
+        instance=recipe,
         many=False,
-        context={'request': request}
+        context={'request': request},
     )
     return Response(serializer.data)
+
 
 @api_view()
 def tag_api_detail(request, pk):
@@ -50,8 +52,8 @@ def tag_api_detail(request, pk):
         pk=pk
     )
     serializer = TagSerializer(
-        instance=tag, 
+        instance=tag,
         many=False,
-        context={'request': request}
+        context={'request': request},
     )
     return Response(serializer.data)
