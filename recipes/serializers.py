@@ -49,6 +49,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         return f'{recipe.preparation_time} {recipe.preparation_time_unit}'
 
     def validate(self, attrs):
+        # print('Instancia ', self.instance)
         if self.instance is not None and attrs.get('servings') is None:
             attrs['servings'] = self.instance.servings
 
